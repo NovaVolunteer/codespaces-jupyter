@@ -37,9 +37,10 @@ cpu_sum(data)
 numpy_sum(data)
 gpu_sum(data)
 
-# %%
+# %% 
 import concurrent.futures
 import os
+# %%
 
 def chunked_sum(chunk):
     """
@@ -79,7 +80,7 @@ def parallel_sum(data, max_workers=None):
     # Prints the total sum and the time taken for the parallel computation
     print(f"Parallel sum ({n_workers} workers): {total:.2f}, Time: {end - start:.4f}s")
 
-
+# %%
 print("\nParallel vs single-core sum:")
 # Single core (no parallelism)
 parallel_sum(data, max_workers=1)
@@ -87,3 +88,4 @@ parallel_sum(data, max_workers=1)
 parallel_sum(data, max_workers=os.cpu_count())
 
 # %%
+# How would we check for 2 and 3 cores? 
