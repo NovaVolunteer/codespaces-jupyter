@@ -52,8 +52,10 @@ def chunked_sum(chunk):
 
 # Below is a function that performs parallel summation of a large dataset using 
 # multiple processes.
+
 # It divides the dataset into chunks, computes the sum of each chunk in parallel,
 # and then combines the results to get the total sum.
+
 def parallel_sum(data, max_workers=None):
     # Split data into chunks for each worker
     n_workers = max_workers or os.cpu_count()
@@ -65,6 +67,7 @@ def parallel_sum(data, max_workers=None):
     # Syntax: [expression for item in iterable if condition]
     # This creates a list of chunks, where each chunk is a slice of the data.
     # [expression for item in iterable "if condition"]
+    
     chunks = [data[i*chunk_size:(i+1)*chunk_size] for i in range(n_workers)]
     # Handle any leftover data
     if len(data) % n_workers:
@@ -77,8 +80,13 @@ def parallel_sum(data, max_workers=None):
         # where chunked_sum computes the sum of each chunk. 
     total = sum(results) #adds up the partial sums returned by each worker
     end = time.time() # records the time after the computation is done
+    
     # Prints the total sum and the time taken for the parallel computation
     print(f"Parallel sum ({n_workers} workers): {total:.2f}, Time: {end - start:.4f}s")
+
+# %%
+os.cpu_count()
+
 
 # %%
 print("\nParallel vs single-core sum:")
